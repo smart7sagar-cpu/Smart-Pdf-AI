@@ -391,8 +391,8 @@ with tab_sum:
         st.markdown('<div class="panel">', unsafe_allow_html=True)
         st.markdown(st.session_state.summary)
         st.markdown("</div>", unsafe_allow_html=True)
-        st.download_button("⬇️ Summary download karein (.pdf)", st.session_state.summary,
-                           file_name="summary.pdf", mime="text/markdown")
+        st.download_button("⬇️ Summary download karein (.md)", st.session_state.summary,
+                           file_name="summary.md", mime="text/markdown")
     else:
         st.markdown('<div class="empty"><h4>Abhi koi summary nahi hai</h4>'
                     "<p>Upar style chunein aur “Summary banao” dabayein.</p></div>",
@@ -512,6 +512,6 @@ with tab_tools:
         st.markdown('<div class="panel">', unsafe_allow_html=True)
         st.markdown(t_text)
         st.markdown("</div>", unsafe_allow_html=True)
-        st.download_button("⬇️ Download (.pdf)", t_text, file_name="output.pdf", mime="text/markdown")
+        st.download_button("⬇️ Download (.md)", t_text, file_name="output.md", mime="text/markdown")
 
 st.markdown('<div class="footer">AI PDF Assistant · Made by SAGAR</div>', unsafe_allow_html=True)
