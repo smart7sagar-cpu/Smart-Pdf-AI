@@ -103,16 +103,25 @@ h1, h2, h3, h4 { font-family: 'Mukta', 'Hind', sans-serif !important; letter-spa
 )
 
 # =====================================================================
-# API client
+# API client (With Multi-Key Rotation)
 # =====================================================================
-try:
-    client = genai.Client(api_key=st.secrets["GEMINI_API_KEY"])
-except Exception:
+import random
+
+if "GEMINI_KEYS" in st.secrets:
+    # Saari keys me se har baar koi ek random key uthayega
+    selected_key = random.choice(st.secrets["GEMINI_KEYS"])
+    try:
+        client = genai.Client(api_key=selected_key)
+    except Exception as e:
+        st.error(f"Client initialize nahi ho paya: {e}")
+        st.stop()
+else:
     st.error(
-        "GEMINI_API_KEY nahi mili. Streamlit → Settings → Secrets me ye add karein:\n\n"
-        '`GEMINI_API_KEY = "aapki_key"`'
+        "GEMINI_KEYS nahi mili. Streamlit → Settings → Secrets me list add karein:\n\n"
+        'GEMINI_KEYS = ["key1", "key2", "key3"]'
     )
     st.stop()
+
 
 
 # =====================================================================
